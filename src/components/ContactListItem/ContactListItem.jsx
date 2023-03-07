@@ -18,15 +18,19 @@ const ContactListItem = ({ contact }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
-  const hendleDelete = e => {
-    const deletedElId = e.target.parentElement.getAttribute('id');
-    dispatch(deleteContact(deletedElId));
+  const hendleDelete = id => {
+    dispatch(deleteContact(id));
   };
   return (
     <Contact id={id}>
       <ContactName>{name}</ContactName>
       <ContactNumber>{phone}</ContactNumber>
-      <ContactButton type="button" onClick={hendleDelete}>
+      <ContactButton
+        type="button"
+        onClick={() => {
+          hendleDelete(id);
+        }}
+      >
         {isLoading ? <Loader /> : <CloseIcon />}
       </ContactButton>
     </Contact>
