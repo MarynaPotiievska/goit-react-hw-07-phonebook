@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
 
-import { addContact, getContacts } from 'redux/contactsSlice';
+import { addContact } from 'redux/contactsOperations';
+import { selectContacts } from 'redux/selectors';
 
 import Error from '../ErrorMessage/ErrorMessage';
 
@@ -21,7 +21,7 @@ const contactSchema = yup.object().shape({
 });
 
 const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
@@ -76,9 +76,5 @@ const ContactForm = () => {
     </Formik>
   );
 };
-
-// ContactForm.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
 
 export default ContactForm;

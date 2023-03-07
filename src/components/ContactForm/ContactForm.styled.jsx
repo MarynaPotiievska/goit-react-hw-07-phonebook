@@ -24,9 +24,10 @@ export const ContactInput = styled(Field)`
 `;
 
 export const Button = styled.button`
-  padding: 2px 4px;
+  padding: 4px;
   border: 1px solid #3b85c5;
   border-radius: 4px;
+  align-items: center;
   background-color: #3b85c5;
   color: #ffffff;
   font-family: inherit;
